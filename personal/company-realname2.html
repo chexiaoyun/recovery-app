@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="msapplication-tap-highlight" content="no" />
+		<meta http-equiv="x-ua-compatible" content="IE=edge" />
+		<title>企业实名认证2</title>
+		<link rel="stylesheet" href="../css/common.css" />
+	</head>
+	<body>
+		<div class="u-header u-bgcolor u-flex">
+			<div class="u-header-back u-flex" onclick="goback()"><i></i></div>
+			<div class="u-header-title u-flex">实名认证</div>
+		</div>
+		<div class="u-container u-flex">
+			<span class="u-tip u-flex">* 完成认证有助于您享受U智的更多服务和功能！</span>
+			<form action="" class="u-flex u-noform">
+				<div class="u-item phone u-flex">
+					<input type="text" placeholder="账户操作人姓名"  />
+				</div>
+				<div class="u-item passwd u-flex">
+					<input type="number" placeholder="身份证号码" />
+				</div>
+			</form>
+			<div class="u-photoId u-flex u-center">
+				<div class="u-photo-title">拍照上传身份证</div>
+				<div class="u-photo-upload">
+					<div class="u-upload u-positive u-flex u-center" id="btn">
+						<img src="../img/positive.png" alt="" class="imgone" />
+					</div>
+					<div class="u-upload u-side u-flex u-center" id="back">
+						<img src="../img/side.png" alt="" class="imgone" />
+					</div>
+				</div>
+			</div>
+			<button class="u-btn u-bgcolor"><a href="company-realname3.html">下一步</a></button>
+		</div>
+		
+		
+		<script src="../js/jquery-1.11.0.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/cslCamera.js"></script>
+		<script type="text/javascript">
+			var img=$(".img");
+			var callBack=function(album){
+				//alert(album);
+				console.log(album);
+				console.log(img);
+				album.forEach(function(val,idx){
+					var img=$("<img/>");
+					var div=$('.u-positive');
+					var imgone=$('.u-positive').find('img');
+					imgone.remove();
+					img.attr("src",val.data);
+					img.addClass('img');
+					div.append(img);
+				});
+			}
+			var callGo=function(album){
+				console.log(album);
+				console.log(img);
+				album.forEach(function(val,idx){
+					var img=$("<img/>");
+					var divs=$('.u-side');
+					var imgone=$('.u-side').find('img');
+					imgone.remove();
+					img.attr("src",val.data);
+					img.addClass('img');
+					divs.append(img);
+				});
+			}
+			var carera=new $.Pgater($("#btn"),callBack);
+			var carera2=new $.Pgater($("#back"),callGo);
+			
+			function goback(){
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>

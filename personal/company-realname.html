@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />    
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="msapplication-tap-highlight" content="no" />
+		<meta http-equiv="x-ua-compatible" content="IE=edge" />
+		<title>企业实名认证</title>
+		<link rel="stylesheet" href="../css/common.css" />
+	</head>
+	<body>
+		<div class="u-header u-bgcolor u-flex">
+			<div class="u-header-back u-flex" onclick="goback()"><i></i></div>
+			<div class="u-header-title u-flex">实名认证</div>
+		</div>
+		<div class="u-container u-flex">
+			<span class="u-tip u-flex">* 完成认证有助于您享受U智的更多服务和功能！</span>
+			<form action="" class="u-flex u-noform">
+				<div class="u-item phone u-flex">
+					<input type="text" placeholder="企业名称"  />
+				</div>
+				<div class="u-item passwd u-flex">
+					<input type="number" placeholder="营业执照编号" />
+				</div>
+			</form>
+			<div class="u-photoId u-flex u-center">
+				<div class="u-photo-title">拍照上传企业证件</div>
+				<div class="u-photo-upload">
+					<div class="u-upload u-busin u-flex u-center" id="btn">
+						<img src="../img/license.png" alt="" class="imgone" />
+					</div>
+				</div>
+				<span class="u-photo-tip">营业执照复印件（需盖公章）</span>
+			</div>
+			<button class="u-btn u-bgcolor"><a href="company-realname2.html">下一步</a></button>
+		</div>
+		
+		
+		<script src="../js/jquery-1.11.0.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/cslCamera.js"></script>
+		<script type="text/javascript">
+			var img=$(".img");
+			var callBack=function(album){
+				//alert(album);
+				console.log(album);
+				console.log(img);
+				album.forEach(function(val,idx){
+					var img=$("<img/>");
+					var div=$('.u-busin');
+					var imgone=$('.u-busin').find('img');
+					imgone.remove();
+					img.attr("src",val.data);
+					img.addClass('img');
+					div.append(img);
+				});
+			}
+			var carera=new $.Pgater($("#btn"),callBack);
+			
+			function goback(){
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>
